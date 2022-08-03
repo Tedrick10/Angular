@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servers</title>
+</head>
+<body>
+    <label>Server Name</label>
+    <input type="text" class="form-control" [(ngModel)]="serverName">
+    <button class="btn btn-primary" [disabled]="!allowNewServer" (click)="onCreateServer()">Add Server</button>
+    <p>{{ allowNewServer }}</p>
+    <p [innerText]="serverCreationStatus" *ngIf="serverCreated else noServer"></p>
+    <ng-template #noServer>
+        <p>No server was created.</p>
+    </ng-template>
+    <p>{{ serverName }}</p>
+    <app-server *ngFor="let server of servers; let i = index"></app-server>
+</body>
+</html>
